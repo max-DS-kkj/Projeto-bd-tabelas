@@ -69,3 +69,19 @@ INSERT INTO produto (nome, marca, especificacoes_tecnicas, preco, nota_avaliacao
 ('Cadeira Ergonômica Pro', 'Flexform', 'Ajuste de altura, apoio lombar, malha mesh', 850.00, 4.50, 2, 2),
 ('Camiseta Algodão Premium', 'Basics', '100% algodão penteado, cor preta, tamanho M', 79.90, 4.20, 3, 3);
 
+CREATE TABLE compra (
+    id_compra SERIAL PRIMARY KEY,
+    data_compra TIMESTAMP,
+    valor_total DECIMAL(10,2) NOT NULL,
+    status VARCHAR(50),
+    id_cliente INT NOT NULL,
+    id_endereco INT NOT NULL,
+    CONSTRAINT fk_compra_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+    CONSTRAINT fk_compra_endereco FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+);
+
+INSERT INTO compra (data_compra, valor_total, status, id_cliente, id_endereco) VALUES
+('2026-05-01 10:30:00', 1999.90, 'Entregue', 1, 1),
+('2026-09-12 14:15:00', 850.00, 'Em Transporte', 2, 2),
+('2026-09-29 16:45:00', 159.80, 'Processando', 3, 3);
+
