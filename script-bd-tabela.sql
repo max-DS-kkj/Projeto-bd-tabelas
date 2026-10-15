@@ -28,3 +28,14 @@ INSERT INTO endereco (logradouro, numero, cidade, estado, cep, id_cliente) VALUE
 ('Avenida Brasil', '456', 'Rio de Janeiro', 'RJ', '67364-096', 2),
 ('Rua dos Inconfidentes', '789', 'Belo Horizonte', 'MG', '95776-091', 3);
 
+CREATE TABLE categoria (
+    id_categoria SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT
+);
+
+INSERT INTO categoria (nome, descricao) VALUES
+('Eletrônicos', 'Dispositivos eletrônicos em geral'),
+('Móveis', 'Móveis para Quarto gamer e residência'),
+('Vestuário', 'Roupas, calçados e acessórios');
+
