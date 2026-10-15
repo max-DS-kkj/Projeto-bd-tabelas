@@ -51,3 +51,21 @@ INSERT INTO fornecedor (nome, cnpj, contato) VALUES
 ('Móveis Design S.A.', '98.765.929/5424-10', 'contato@moveisdesign.com'),
 ('Confecções Silva EIRELI', '45.656.912/8873-34', 'atendimento@confeccoessilva.com');
 
+CREATE TABLE produto (
+    id_produto SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    marca VARCHAR(255) NOT NULL,
+    especificacoes_tecnicas TEXT,
+    preco DECIMAL(10,2) NOT NULL,
+    nota_avaliacao DECIMAL(3,2),
+    id_categoria INT NOT NULL,
+    id_fornecedor INT NOT NULL,
+    CONSTRAINT fk_produto_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria),
+    CONSTRAINT fk_produto_fornecedor FOREIGN KEY (id_fornecedor) REFERENCES fornecedor(id_fornecedor)
+);
+
+INSERT INTO produto (nome, marca, especificacoes_tecnicas, preco, nota_avaliacao, id_categoria, id_fornecedor) VALUES
+('Galaxy S24 FE', 'Samsung', '256GB, 8GB RAM, Tela 6.7', 4.299.00, 4.80, 1, 1),
+('Cadeira Ergonômica Pro', 'Flexform', 'Ajuste de altura, apoio lombar, malha mesh', 850.00, 4.50, 2, 2),
+('Camiseta Algodão Premium', 'Basics', '100% algodão penteado, cor preta, tamanho M', 79.90, 4.20, 3, 3);
+
