@@ -39,3 +39,15 @@ INSERT INTO categoria (nome, descricao) VALUES
 ('Móveis', 'Móveis para Quarto gamer e residência'),
 ('Vestuário', 'Roupas, calçados e acessórios');
 
+CREATE TABLE fornecedor (
+    id_fornecedor SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(18) NOT NULL UNIQUE,
+    contato VARCHAR(255)
+);
+
+INSERT INTO fornecedor (nome, cnpj, contato) VALUES
+('Tech Distribuidora LTDA', '12.116.906/8267-90', 'vendas@techdistro.com'),
+('Móveis Design S.A.', '98.765.929/5424-10', 'contato@moveisdesign.com'),
+('Confecções Silva EIRELI', '45.656.912/8873-34', 'atendimento@confeccoessilva.com');
+
