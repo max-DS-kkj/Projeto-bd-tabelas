@@ -100,3 +100,18 @@ INSERT INTO compra_produto (quantidade, valor_unitario, id_compra, id_produto) V
 (1, 850.00, 2, 2),
 (2, 79.90, 3, 3);
 
+CREATE TABLE carrinho (
+    id_carrinho SERIAL PRIMARY KEY,
+    quantidade INT NOT NULL,
+    preco_unitario DECIMAL(10,2) NOT NULL,
+    id_cliente INT NOT NULL,
+    id_produto INT NOT NULL,
+    CONSTRAINT fk_carrinho_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+    CONSTRAINT fk_carrinho_produto FOREIGN KEY (id_produto) REFERENCES produto(id_produto)
+);
+
+INSERT INTO carrinho (quantidade, preco_unitario, id_cliente, id_produto) VALUES
+(1, 79.90, 1, 3),
+(2, 850.00, 2, 2),
+(1, 1999.90, 3, 1)
+
