@@ -115,3 +115,18 @@ INSERT INTO carrinho (quantidade, preco_unitario, id_cliente, id_produto) VALUES
 (2, 850.00, 2, 2),
 (1, 1999.90, 3, 1)
 
+CREATE TABLE pagamento (
+    id_pagamento SERIAL PRIMARY KEY,
+    forma_pagamento VARCHAR(50) NOT NULL,
+    taxa_entrega DECIMAL(10,2),
+    valor_pago DECIMAL(10,2) NOT NULL,
+    status_pagamento VARCHAR(50),
+    id_compra INT NOT NULL,
+    CONSTRAINT fk_pagamento_compra FOREIGN KEY (id_compra) REFERENCES compra(id_compra)
+);
+
+INSERT INTO pagamento (forma_pagamento, taxa_entrega, valor_pago, status_pagamento, id_compra) VALUES
+('Cartão de Crédito', 15.00, 2014.90, 'Aprovado', 1),
+('PIX', 0.00, 850.00, 'Aprovado', 2),
+('Boleto', 10.00, 169.80, 'Aguardando Pagamento', 3);
+
