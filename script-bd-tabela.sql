@@ -85,3 +85,18 @@ INSERT INTO compra (data_compra, valor_total, status, id_cliente, id_endereco) V
 ('2026-09-12 14:15:00', 850.00, 'Em Transporte', 2, 2),
 ('2026-09-29 16:45:00', 159.80, 'Processando', 3, 3);
 
+CREATE TABLE compra_produto (
+    id_compra_produto SERIAL PRIMARY KEY,
+    quantidade INT NOT NULL,
+    valor_unitario DECIMAL(10,2) NOT NULL,
+    id_compra INT NOT NULL,
+    id_produto INT NOT NULL,
+    CONSTRAINT fk_compra_produto_compra FOREIGN KEY (id_compra) REFERENCES compra(id_compra),
+    CONSTRAINT fk_compra_produto_produto FOREIGN KEY (id_produto) REFERENCES produto(id_produto)
+);
+
+INSERT INTO compra_produto (quantidade, valor_unitario, id_compra, id_produto) VALUES
+(1, 1999.90, 1, 1),
+(1, 850.00, 2, 2),
+(2, 79.90, 3, 3);
+
