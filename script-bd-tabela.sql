@@ -130,3 +130,15 @@ INSERT INTO pagamento (forma_pagamento, taxa_entrega, valor_pago, status_pagamen
 ('PIX', 0.00, 850.00, 'Aprovado', 2),
 ('Boleto', 10.00, 169.80, 'Aguardando Pagamento', 3);
 
+CREATE TABLE estoque (
+    id_estoque SERIAL PRIMARY KEY,
+    quantidade INT,
+    localizacao_almacenar VARCHAR(100),
+    id_produto INT NOT NULL,
+    CONSTRAINT fk_estoque_produto FOREIGN KEY (id_produto) REFERENCES produto(id_produto)
+);
+
+INSERT INTO estoque (quantidade, localizacao_almacenar, id_produto) VALUES
+(50, 'Corredor A - Prateleira 3', 1),
+(20, 'Corredor B - Prateleira 1', 2),
+(150, 'Corredor C - Prateleira 5', 3)
